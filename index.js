@@ -3,8 +3,11 @@ blue.Bluetooth()
 
 
 blue.on(blue.bluetoothEvents.Ready, function(isready) {
-    console.log('Bluetooth Device Ready', JSON.stringify(isready,null,2))
-    console.log("scanning...");
+     console.log('Bluetooth Device Ready', JSON.stringify(isready,null,2))
+     console.log("making discoverable...")
+     blue.discoverable(true);
+
+     console.log("scanning...");
      blue.scan(true)
      setTimeout(function(){
          console.log('stopping scan')
