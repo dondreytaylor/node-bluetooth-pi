@@ -24,12 +24,21 @@ blue.on(blue.bluetoothEvents.PassKey, function (passkey) {
 var hasBluetooth = blue.checkBluetoothController();
 console.log('system has bluetooth controller:' + hasBluetooth)
 
-if(hasBluetooth) {
-    console.log('isBluetooth Ready:' + blue.isBluetoothReady)
-    blue.scan(true)
-    setTimeout(function(){
-        console.log('stopping scan')
-        blue.scan(false)
-        blue.info('00:0C:8A:8C:D3:71')
-    },5000)
-}
+
+var waitAndScan = function() {
+    if (blue.isBluetoothReady) {
+        console.log('isBluetooth Ready:' + blue.isBluetoothReady)
+        blue.scan(true)
+        setTimeout(function(){
+            console.log('stopping scan')
+            blue.scan(false)
+            blue.info('00:0C:8A:8C:D3:71')
+        },5000)
+    } else {
+        console.log('isBluetooth Ready:' + blue.isBluetoothReady)
+        waitAndScan();
+    }
+};
+
+
+waitAndScan();
