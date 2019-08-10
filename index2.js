@@ -36,4 +36,4 @@ var blue = require("bluetoothctl");
 
 setInterval(function() {
     console.log(blue.isBluetoothReady);
-}, 20000);
+}, 2000);
