@@ -1,4 +1,4 @@
-var blue = require("./bluetoothctl.js");
+var blue = require("bluetoothctl");
 blue.Bluetooth()
 
 
