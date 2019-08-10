@@ -4,6 +4,7 @@ blue.Bluetooth()
 
 blue.on(blue.bluetoothEvents.Controller, function(controllers){
     console.log('Controllers:' + JSON.stringify(controllers,null,2))
+    console.log('isBluetooth Ready:' + blue.isBluetoothReady)
 });
 
 
