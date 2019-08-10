@@ -135,15 +135,15 @@ exports.Bluetooth = function () {
     term.on('data', function (data) {
         data = ransi(data).replace('[bluetooth]#', '');
         if (data.indexOf('bluetoothctl is ') !== -1 && data.indexOf('/usr/bin/bluetoothctl') !== -1) {
+            console.log('bluetooth controller exists')
+            term.write('bluetoothctl\r');
+            term.write('power on\r');
+            term.write('agent on\r');
             isBluetoothControlExists = true
             if (!isBluetoothReady) {
               isBluetoothReady=true;
               self.emit(bluetoothEvents.Ready, true)
             }
-            console.log('bluetooth controller exists')
-            term.write('bluetoothctl\r');
-            term.write('power on\r');
-            term.write('agent on\r');
             setInterval(checkInfo, 5000, self)
         }
         //console.log("mydata:" + data)
