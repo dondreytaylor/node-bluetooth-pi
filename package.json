@@ -1,0 +1,22 @@
+{
+  "name": "node-bluetooth-pi",
+  "version": "1.0.0",
+  "description": "Bluetooth testing on the pi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dondreytaylor/node-bluetooth-pi.git"
+  },
+  "author": "Dondrey Taylor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dondreytaylor/node-bluetooth-pi/issues"
+  },
+  "homepage": "https://github.com/dondreytaylor/node-bluetooth-pi#readme",
+  "dependencies": {
+    "bluetoothctl": "^1.1.0"
+  }
+}
