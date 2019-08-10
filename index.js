@@ -1,4 +1,4 @@
-let bluetoothctl = require("./bluetoothctl_lib/bluetoothctl.js");
+let bluetoothctl = require("./bluetoothctl_lib/bluetoothctl");
 
 let counter = 0;
 
