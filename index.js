@@ -1,44 +1,33 @@
-var blue = require("bluetoothctl");
-blue.Bluetooth()
+let bluetoothctl = require("./bluetoothctl_lib/bluetoothctl");
 
+let counter = 0;
 
-blue.on(blue.bluetoothEvents.Controller, function(controllers){
-    console.log('Controllers:' + JSON.stringify(controllers,null,2))
-    console.log('isBluetooth Ready:' + blue.isBluetoothReady)
-});
-
-
-blue.on(blue.bluetoothEvents.DeviceSignalLevel, function(devices,mac,signal){
-    console.log('signal level of:' + mac + ' - ' + signal)
-});
-
-blue.on(blue.bluetoothEvents.Device, function (devices) {
-    console.log('devices:' + JSON.stringify(devices,null,2))
-})
-
-blue.on(blue.bluetoothEvents.PassKey, function (passkey) {
-    console.log('Confirm passkey:' + passkey)
-    blue.confirmPassKey(true);
-})
-
-var hasBluetooth = blue.checkBluetoothController();
-console.log('system has bluetooth controller:' + hasBluetooth)
-
-
-var waitAndScan = function() {
-    if (blue.isBluetoothReady) {
-        console.log('isBluetooth Ready:' + blue.isBluetoothReady)
-        blue.scan(true)
-        setTimeout(function(){
-            console.log('stopping scan')
-            blue.scan(false)
-            blue.info('00:0C:8A:8C:D3:71')
-        },5000)
-    } else {
-        console.log('isBluetooth Ready:' + blue.isBluetoothReady)
-        waitAndScan();
+bluetoothctl.exec(
+    "begin",
+    undefined,
+    function(data) {
+        console.log( "BEGIN SUCCESS", data );
+        resolve();
+    },
+    function(err) {
+        console.log( "BEGIN FAILED", err )
     }
-};
+);
 
 
-waitAndScan();
+function resolve(data) {
+    data && console.log(++counter, "DATA", data);
+    bluetoothctl.exec(
+        "devicesWithInfo",
+        {
+            seconds: 10
+        },
+        resolve,
+        reject
+    );
+
+}
+
+function reject(err) {
+    err && console.log("ERR", err);
+}
