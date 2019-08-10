@@ -31,5 +31,5 @@ if(hasBluetooth) {
         console.log('stopping scan')
         blue.scan(false)
         blue.info('00:0C:8A:8C:D3:71')
-    },20000)
+    },5000)
 }
