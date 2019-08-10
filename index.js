@@ -10,7 +10,7 @@ blue.on(blue.bluetoothEvents.Ready, function(isready) {
          console.log('stopping scan')
          blue.scan(false)
          blue.info('00:0C:8A:8C:D3:71')
-     },10000)
+     },20000)
 
 });
 
