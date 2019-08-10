@@ -33,3 +33,7 @@ var blue = require("bluetoothctl");
          blue.info('00:0C:8A:8C:D3:71')
      },5000)
  }
+
+setInterval(function() {
+    console.log(blue.isBluetoothReady);
+}, 20000);
